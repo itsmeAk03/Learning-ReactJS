@@ -10,6 +10,7 @@ import Alert from './components/Alert';
 
 function App() {
   const[mode,setMode]=useState('light');
+  const[greenMode,setGreenMode]=useState('light');
   const[alert, setAlert] = useState('alertmsg');
   // const[col,myColor]=useState('blue');
 
@@ -19,6 +20,9 @@ function App() {
       msg: message,
       type: type
     })
+    setTimeout(() => {
+      setAlert(' ');
+    }, 1500);
   }
 
   // const btnColor=(rang)=>{
@@ -40,12 +44,27 @@ function App() {
      
     }
   }
+
+  const GreenMode=()=>{
+    if(greenMode==='light'){
+    setGreenMode('dark');
+    document.body.style.backgroundColor='green';
+    showAlert("Green Dark Mode has been enabled","success");
+   
+    }
+    else{
+      setGreenMode('light');
+      document.body.style.backgroundColor= 'white';
+      showAlert("Light Mode has been enabled","success");
+     
+    }
+  }
   return (
       <>
-        <Navbar title="Textutils" aboutText="About" mode={mode} toggleMode={toggleMode} />
+        <Navbar title="Textutils" aboutText="About" greenMode={greenMode} mode={mode} toggleMode={toggleMode} GreenMode={GreenMode} />
         <Alert alert={alert} />
         <div className="container my-3" >
-        <TextForm heading="Enter the text " mode={mode} />
+        <TextForm  showAlert={showAlert} heading="Enter the text " greenMode={greenMode} mode={mode} />
         </div>
         {/* <About/> */}
        

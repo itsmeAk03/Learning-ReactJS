@@ -1,17 +1,20 @@
 import React,{useState} from 'react'
 
+
 export default function TextForm(props) {
 
   const handleOnClick=()=>{
     console.log("UpperCase Was clicked");
     let newText=text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted to UpperCase","success");
   }
 
   const handleOnDown=()=>{
     console.log("LoweCase Was clicked");
     let newText=text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted to LowerCase","success");
   }
 
   const handleOnChange=(event)=>{
@@ -23,19 +26,23 @@ export default function TextForm(props) {
     var text=document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlert("Text Copied","success");
   }
 
   const handleExtraSpace=()=>{
     let newText=text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("Extra spaces removed !","success");
   }
 
   const handleClearText=()=>{
     setText('');
+    props.showAlert("Text Cleared !","success");
   }
 
   const[text,setText]=useState("Enter text here");
   // setText("New text");
+  // text.split(" ").length
 
   return (
   <>
@@ -53,7 +60,7 @@ export default function TextForm(props) {
 
 <div className="container my-3" style={{color:props.mode==='dark'?'white':'#042743'}} >
   <h2>Your Text Summary</h2>
-  <p>{text.split(" ").length} words and {text.length} characters</p>
+  <p>{text.split(" ").length===1?0:text.split(" ").length-1} words and {text.length} characters</p>
   <p>{0.008 * text.split(" ").length} Minutes read</p>
   <h2>Preview</h2>
   <p>{text.length>0?text:"Enter Something in textbox above to preview it here"}</p>
