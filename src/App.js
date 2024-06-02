@@ -1,17 +1,17 @@
 
 import React,{ useState }  from 'react'; 
 import './App.css';
-import About from './components/About';
+// import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alert from './components/Alert';
-import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-  Routes
+// import {
+//   BrowserRouter as Router,
+//   Link,
+//   Route,
+//   Routes
   
-} from "react-router-dom";
+// } from "react-router-dom";
 // import { Routes, Route , BrowserRouter as Router, Link} from 'react-router-dom';
 
 
@@ -53,37 +53,37 @@ function App() {
     }
   }
 
-  const GreenMode=()=>{
-    if(greenMode==='light'){
-    setGreenMode('dark');
-    document.body.style.backgroundColor='green';
-    showAlert("Green Dark Mode has been enabled","success");
+  // const GreenMode=()=>{
+  //   if(greenMode==='light'){
+  //   setGreenMode('dark');
+  //   document.body.style.backgroundColor='green';
+  //   showAlert("Green Dark Mode has been enabled","success");
    
-    }
-    else{
-      setGreenMode('light');
-      document.body.style.backgroundColor= 'white';
-      showAlert("Light Mode has been enabled","success");
+  //   }
+  //   else{
+  //     setGreenMode('light');
+  //     document.body.style.backgroundColor= 'white';
+  //     showAlert("Light Mode has been enabled","success");
      
-    }
-  }
+  //   }
+  // }
   return (
       <>
-        <Router>
-        <Navbar title="Textutils" aboutText="About" greenMode={greenMode} mode={mode} toggleMode={toggleMode} GreenMode={GreenMode} />
+        {/* <Router> */}
+        <Navbar title="Textutils" aboutText="About"  mode={mode} toggleMode={toggleMode}  />
         <Alert alert={alert} />
         <div className="container my-3" >
-        <Routes>
-            <Route path="/about" element={<About />}>
-            </Route>
-            <Route path="/" element={<TextForm heading="Enter text to analyze"  mode={mode} showAlert={showAlert} />}>
-            </Route>
-          </Routes>
-
+        {/* <Routes> */}
+            {/* <Route path="/about" element={<About />}> */}
+            {/* </Route> */}
+            {/* <Route path="/" element={<TextForm heading="Enter text to analyze"  mode={mode} showAlert={showAlert} />}> */}
+            {/* </Route> */}
+          {/* </Routes> */}
+          <TextForm heading="Enter text to analyze"  mode={mode} showAlert={showAlert} />
         
         </div>
          {/*<About/>*/} 
-         </Router>
+         {/* </Router> */}
        
       </>
 
